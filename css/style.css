@@ -269,6 +269,8 @@ p {
 
 }
 
+
+
 @media (min-width: 768px) {
     body{
         display: flex;
