@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Actualiza el contenido
         heroTitle.textContent = slides[currentSlide].title;
-        heroImg.style.backgroundImage = `url('/images/${slides[currentSlide].image}')`;
+        heroImg.style.backgroundImage = `url('images/${slides[currentSlide].image}')`;
         heroText.textContent = slides[currentSlide].description;
         triggerAnimation(heroImg, 'slide-in');
         triggerAnimation(heroTitle,'opacidad');    
