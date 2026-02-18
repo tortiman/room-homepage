@@ -16,10 +16,6 @@ body {
     height: 100vh;
 }
 
-header {    
-    min-width: 375px;
-}
-
 .mobile-hamburger {
     /* visibility: hidden; */
     position: absolute;
@@ -80,6 +76,13 @@ header {
     font-size: 1rem;
     color: var(--Black);
     font-weight: 500;
+    transition: padding-bottom 1s;
+    
+}
+
+.menu-mobile li a:hover{
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--Black);
 }
 
 .menu-mobile li:first-child{
@@ -99,6 +102,38 @@ section {
 }
 
 
+.sliders {
+    position: absolute;
+    width: clamp(112px, 112px,159px);
+    height: clamp(56px,56px,84px);
+    background-color: var(--Black);
+    right: 0;
+    top: clamp(304px,304px,450px);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1;
+}
+
+.sliderLeft{
+    cursor: pointer;
+    transition: opacity 250ms;
+}
+
+.sliderRight{
+    cursor: pointer;
+    transition: opacity 250ms;
+}
+
+.sliderLeft:hover{
+    opacity:0.5
+}
+
+.sliderRight:hover{
+    opacity:0.5
+}
+
+
 
 .heroImg {
     background-image: url('../images/mobile-image-hero-1.jpg');
@@ -107,52 +142,47 @@ section {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    position: relative;
+    
 }
 
 
 
-.sliders {
-    position: absolute;
-    width: 30%;
-    height: 3rem;
-    background-color: var(--Black);
-    right: 0;
-    top: 27.5%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
 
 .hero-content {
-    margin: 4rem 2rem;
+
+    padding: 61px 39px 61px 32px;
 
 }
 
 h1 {
-    font-size: 2.3rem;
-    margin-bottom: 1rem;
+    font-size: 2.375rem;
+    
 }
 
 p {
-    line-height: 1.5;
+    line-height: 1.4;
     margin-top: 1rem;
-    margin-bottom: 1rem;
+    letter-spacing: -0.7px;
+    font-weight: 600;
+    color: var(--Grey500);
 }
 
 .btnShop {
-    margin-top: 2rem;
+    padding-top: 1.875rem;
     display: flex;
-    gap: 2rem;
+    align-items: center;
+    gap: 1.8125rem;
     color: var(--Black);
 
 }
 
 .textShop {
     text-decoration: none;
+    font-size: 1rem;
     font-weight: 500;
     letter-spacing: 0.5rem;
     color: var(--Black);
+    line-height: 1.2;
 }
 
 .about-img {
@@ -164,25 +194,241 @@ p {
 }
 
 .about-content {
-    margin: 4rem 2rem;
+    padding: 3.25rem 2.5rem 2.8125rem 2rem;
 }
 
 .about-content h2 {
-    font-size: 1.1rem;
-    letter-spacing: 0.3rem;
-    margin-bottom: 1rem;
+    font-size: 0.875rem;
+    letter-spacing: 0.35625rem;
+   
 }
 
-.about-content p {
-    line-height: 1.5;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-}
+
 
 .light-img {
-    width: 375px;
-    height: 266px;
+    width: 100%;
+    height: auto;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+/* Animaciones imagen hero*/
+
+@keyframes slide-in{
+    from{
+        transform:translateX(-100%)
+    }
+    to{
+        transform:translateX(0)
+    }
+
+}
+
+@keyframes slide-out{
+    from{
+        transform:translateX(100%)
+    }
+    to{
+        transform:translateX(0)
+    }
+
+}
+
+/* Animacion titulo hero opacidad*/
+
+@keyframes opacidad{
+    from{
+        opacity:0.2
+    }
+    to{
+        opacity:1
+    }
+
+
+}
+
+/* Animacion al hacer click en el link shop now*/
+
+@keyframes muelle{
+    0%{
+        gap:0.5rem
+    }
+    20%{
+        gap:1rem
+    }
+    50%{
+        gap:1.5rem
+    }
+    75%{
+        gap:1.8rem
+    }
+    100%{
+        gap:2rem
+    }
+
+}
+
+@media (min-width: 768px) {
+    body{
+        display: flex;
+        justify-content: center;
+        
+    }
+    main{
+        max-width: 90rem; 
+            /* Ensure main never exceeds the viewport width so centering works */
+        /* width: min(100%, 90rem); */
+        display: grid;
+        grid-template-columns: 420px 101px 320px 157px 440px;
+        grid-template-rows: 534px 266px;
+        /* align-items: start;
+        justify-items: stretch; */
+        height: auto;
+        position: relative;
+        
+    }
+    .mobile-hamburger{
+        display: none;
+    }
+    .mobile-close{
+        display: none;
+
+    }
+    .menu-desktop{
+        position: absolute;
+        display: flex;
+        height: auto;
+        flex-direction: row;
+        gap: 30px;
+        top: 4rem;
+        left: 23rem;
+        z-index: 10;
+    
+    }
+
+    .menuDesktop{
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+    }
+    .menuDesktop li{
+        list-style: none;
+        
+    }
+
+    .menuDesktop li:first-child{
+        padding-left: 1.6875rem;
+    }
+
+    .menuDesktop li a{
+        color: var(--White);
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: 500;
+        transition: padding-bottom 1s;
+
+    }
+
+    .menu-desktop li a:hover{
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--White);
+    }
+    .sliders {
+        position: absolute;
+        width: 159px;
+        height: 84px;
+        background-color: var(--Black);
+        left: 52.5rem;
+        top: 28.125rem;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        z-index: 1;
+    }
+
+    /* Allow .hero's children to act as direct grid items of <main> */
+    .hero {
+        display: contents;
+    }
+
+
+    .heroImg {
+        background-image: url('../images/desktop-image-hero-1.jpg');
+        width: 100%;
+        height: 100%;
+        grid-column: 1 / 4;
+        grid-row: 1 / 2;
+        
+        
+    }
+
+
+    .hero-content {
+        padding: 7.5rem 2.5rem 2.5rem 6.25rem;
+        grid-column: 4 / 6;
+        grid-row: 1 / 2;
+        
+
+    }
+
+    .hero-text{
+        margin-top: 1.875rem;
+    }
+
+    .btnShop {
+        padding-top: 1.812  5rem;
+        display: flex;
+        align-items: center;
+        gap: 1.8125rem;
+        color: var(--Black);
+
+    }
+
+    .textShop {
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: 500;
+        letter-spacing: 0.725rem;
+        color: var(--Black);
+        line-height: 1.2;
+    }
+
+    .about {
+        display: contents;
+    }
+
+    .about-img {
+        width: 100%;
+        height: 100%;
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+
+    
+    }
+
+    .about-content {
+        padding: 3.25rem 2.5rem 2.8125rem 2rem;
+        grid-column: 2 / 5;
+        grid-row: 2 / 3;
+        padding: 4.0625rem 3.75rem 0 3rem;
+        margin-top: 0.8125rem;
+    }
+
+    .about-content h2 {
+        font-size: 0.875rem;
+        letter-spacing: 0.35625rem;
+    
+    }
+
+
+
+    .light-img {
+        width: 100%;
+        height: auto;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
 }
