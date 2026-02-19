@@ -290,6 +290,10 @@ p {
         position: relative;
         
     }
+
+    header{
+        position: relative;
+    }
     .mobile-hamburger{
         display: none;
     }
@@ -304,7 +308,7 @@ p {
         flex-direction: row;
         gap: 30px;
         top: 4rem;
-        left: 23rem;
+        left: 3.5rem;
         z-index: 10;
     
     }
