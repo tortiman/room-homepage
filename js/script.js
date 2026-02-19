@@ -38,20 +38,27 @@ document.addEventListener('DOMContentLoaded', function() {
         
     heroTitle.textContent = slides[currentSlide].title;
     heroText.textContent = slides[currentSlide].description;
+    if (heroImg) {
+        heroImg.style.backgroundImage = `url('./images/${slides[currentSlide].image}')`;
+    }
         
-    btnHamburguer.addEventListener('click',()=>{
-        console.log('click');
-        menuMobile.style.visibility='visible';
-        mobileHamburguer.style.visibility='hidden';
+    if (btnHamburguer && menuMobile && mobileHamburguer) {
+        btnHamburguer.addEventListener('click', () => {
+            menuMobile.style.visibility = 'visible';
+            mobileHamburguer.style.visibility = 'hidden';
+        });
+    }
 
-        
-
-    });
-
-    btnClose.addEventListener('click',()=>{
+    if (btnClose && menuMobile && mobileHamburguer) {
+        btnClose.addEventListener('click', () => {
+            menuMobile.style.visibility = 'hidden';
+            mobileHamburguer.style.visibility = 'visible';
+        });
+    }
         menuMobile.style.visibility='hidden';
         mobileHamburguer.style.visibility='visible';
-    });
+
+
 
         // helper para reiniciar y limpiar la animación de las imagenes de hero
     function triggerAnimation(el, animationName) {
@@ -66,39 +73,41 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             el.addEventListener('animationend', clear);
     }
-
-
-
-
-    sliderRight.addEventListener('click', () => {
+    
+    
+    
+    
+    if (sliderRight) {
+        sliderRight.addEventListener('click', () => {
         // Aumenta el índice, y si llega al final, vuelve al inicio
         currentSlide = (currentSlide + 1) % slides.length;
         
         // Actualiza el contenido
         heroTitle.textContent = slides[currentSlide].title;
-        heroImg.style.backgroundImage = `url('images/${slides[currentSlide].image}')`;
+        if (heroImg) heroImg.style.backgroundImage = `url('./images/${slides[currentSlide].image}')`;
         heroText.textContent = slides[currentSlide].description;
         triggerAnimation(heroImg, 'slide-in');
         triggerAnimation(heroTitle,'opacidad');    
-    });
-
-    sliderLeft.addEventListener('click', () => {
-        
-            currentSlide = (currentSlide -1) % slides.length;
-            if (currentSlide<0){
-                currentSlide=2;
-            }
-                 // Actualiza el contenido
-                 heroTitle.textContent = slides[currentSlide].title;
-                 heroImg.style.backgroundImage = `url('../images/${slides[currentSlide].image}')`;
-                 heroText.textContent = slides[currentSlide].description;
-                 triggerAnimation(heroImg, 'slide-out');
-                 triggerAnimation(heroTitle,'opacidad');    
-     });
-
+        });
+    }
+    
+    if (sliderLeft) {
+        sliderLeft.addEventListener('click', () => {
+            currentSlide = (currentSlide - 1);
+            if (currentSlide < 0) currentSlide = slides.length - 1;
+            // Actualiza el contenido
+            heroTitle.textContent = slides[currentSlide].title;
+            if (heroImg) heroImg.style.backgroundImage = `url('./images/${slides[currentSlide].image}')`;
+            heroText.textContent = slides[currentSlide].description;
+            triggerAnimation(heroImg, 'slide-out');
+            triggerAnimation(heroTitle,'opacidad');    
+        });
+    }
+    
      textShop.addEventListener('click',()=>
     {
         triggerAnimation(btnShop,'muelle');
     });
+    });
 
-});
+
